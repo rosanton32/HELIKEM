@@ -1,285 +1,595 @@
-<!DOCTYPE html><html lang="es" style=""><head><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>HELIKEM Solutions - Del concepto al impacto</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>HELIKEM Solutions - Del concepto al impacto</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Material Symbols -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700"
+    rel="stylesheet"
+  />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            turquoise: '#40E0D0',
-            deep: '#000306',
-            teal: '#226E7B',
-            light: '#F7F7F7',
+            turquoise: "#40E0D0",
+            deep: "#000306",
+            teal: "#226E7B",
+            light: "#F7F7F7",
           },
           fontFamily: {
-            sans: ['Inter', 'sans-serif'],
+            sans: ["Inter", "sans-serif"],
           },
-          spacing: {
-            "container-max": "1280px",
-            "gutter": "24px",
-            "section-gap-sm": "80px",
-            "section-gap-lg": "160px"
-          }
-        }
-      }
-    }
+        },
+      },
+    };
   </script>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
-    
-    body {
-      background-color: #000306;
-      color: #FFFFFF;
-      font-family: 'Inter', sans-serif;
+
+  <style>
+    html {
+      scroll-behavior: smooth;
     }
 
-    /* Custom Ticker Animation */
-    @keyframes ticker {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+    body {
+      background-color: #000306;
+      color: #ffffff;
+      font-family: "Inter", sans-serif;
     }
+
+    /* Ticker Animation */
+    @keyframes ticker {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
     .animate-ticker {
       animation: ticker 30s linear infinite;
     }
 
-    /* Subtle Grid Background for Sections */
+    /* Grid Background */
     .grid-bg {
-      background-image: 
-        linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-image:
+        linear-gradient(to right,
+          rgba(255, 255, 255, 0.05) 1px,
+          transparent 1px),
+        linear-gradient(to bottom,
+          rgba(255, 255, 255, 0.05) 1px,
+          transparent 1px);
+
       background-size: 100px 100px;
     }
   </style>
-<link data-snapdom="injected-import" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&amp;display=swap" rel="stylesheet"></head>
-<body class="antialiased">
-<!-- BEGIN: Navigation -->
-<nav class="fixed w-full z-50 px-6 py-4 flex justify-between items-center mix-blend-difference">
-<div class="text-2xl font-bold tracking-tighter text-white"><span class="text-turquoise">HELIKEM</span></div>
-<div class="hidden md:flex gap-8 text-sm font-semibold tracking-wide text-white">
-<a class="hover:text-turquoise transition-colors" href="#quienes-somos"><font color="#40e0d0"><span class="" style="font-size: 24px; letter-spacing: -1.2px;"><h3 class="text-xl font-bold mb-4 cursor-text" data-stitch-added-classes="cursor-text" spellcheck="false" style="--tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; color: rgb(0, 3, 6); letter-spacing: normal; outline: none !important; box-shadow: none !important;"></h3><h3 class="text-xl font-bold mb-4" style="--tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; color: rgb(0, 3, 6); letter-spacing: normal; outline: none !important; box-shadow: none !important;"></h3></span></font></a>
-<a class="hover:text-turquoise transition-colors" href="#servicios">onstruimos juntos</a>
-<a class="hover:text-turquoise transition-colors" href="#enfoque">Enfoque</a>
-</div>
-<a class="bg-turquoise text-deep px-6 py-2 rounded-full text-sm font-bold hover:bg-white transition-colors duration-300" href="#contacto">
+</head>
+
+<body class="antialiased overflow-x-hidden">
+
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 left-0 w-full z-50 px-6 py-4 flex justify-between items-center bg-deep/70 backdrop-blur-md border-b border-white/10">
+
+    <div class="text-2xl font-extrabold tracking-tighter text-white">
+      <span class="text-turquoise">HELIKEM</span>
+    </div>
+
+    <div class="hidden md:flex gap-8 text-sm font-semibold tracking-wide text-white">
+
+      <a class="hover:text-turquoise transition-colors" href="#quienes-somos">
+        Quiénes Somos
+      </a>
+
+      <a class="hover:text-turquoise transition-colors" href="#servicios">
+        Servicios
+      </a>
+
+      <a class="hover:text-turquoise transition-colors" href="#enfoque">
+        Enfoque
+      </a>
+
+    </div>
+
+    <a
+      href="#contacto"
+      class="bg-turquoise text-deep px-6 py-2 rounded-full text-sm font-bold hover:bg-white transition-colors duration-300"
+    >
       Contactar →
     </a>
-</nav>
-<!-- END: Navigation -->
-<!-- BEGIN: Hero Section -->
-<header class="relative min-h-screen flex items-center justify-center overflow-hidden bg-turquoise text-deep px-6">
-<div class="absolute inset-0 grid-bg opacity-20"></div>
-<div class="relative z-10 max-w-6xl mx-auto w-full flex flex-col md:flex-row items-center gap-12 pt-24">
-<div class="w-full md:w-2/3">
-<span class="inline-block px-4 py-1 border border-deep rounded-full text-xs font-bold uppercase tracking-widest mb-6">ESPAÑA · PORTUGAL</span>
-<h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter leading-none mb-8 uppercase">
-          Del concepto <br> al <span class="text-white">impacto.</span>
-</h1>
-<p class="text-lg md:text-xl font-medium max-w-xl mb-10 opacity-90">
-          Consultoría estratégica, Marketing y eventos para marcas que quieren crecer, posicionarse y liderar en el mercado de Iberia.
+
+  </nav>
+
+  <!-- HERO -->
+  <header class="relative min-h-screen flex items-center justify-center overflow-hidden bg-turquoise text-deep px-6">
+
+    <div class="absolute inset-0 grid-bg opacity-20"></div>
+
+    <div class="relative z-10 max-w-6xl mx-auto w-full flex flex-col md:flex-row items-center gap-12 pt-24">
+
+      <!-- LEFT -->
+      <div class="w-full md:w-2/3">
+
+        <span class="inline-block px-4 py-1 border border-deep rounded-full text-xs font-bold uppercase tracking-widest mb-6">
+          ESPAÑA · PORTUGAL
+        </span>
+
+        <h1 class="text-5xl md:text-8xl font-extrabold tracking-tighter leading-none mb-8 uppercase">
+          Del concepto <br />
+          al <span class="text-white">impacto.</span>
+        </h1>
+
+        <p class="text-lg md:text-xl font-medium max-w-xl mb-10 opacity-90">
+          Consultoría estratégica, marketing y eventos para marcas que quieren crecer,
+          posicionarse y liderar en el mercado de Iberia.
         </p>
-<div class="flex gap-4">
-<a class="bg-deep text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-deep transition-colors duration-300 flex items-center gap-2" href="#contacto">
-            Hablar con nosotros <span class="text-xl">→</span>
-</a>
-</div>
-</div>
-<div class="w-full md:w-1/3 relative">
-<!-- Hero Abstract Shape / Image Placeholder -->
-<div class="w-full aspect-square rounded-3xl bg-teal overflow-hidden relative shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
-<img alt="Strategic Growth" class="w-full h-full object-cover opacity-80 mix-blend-overlay" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrqn6ScyESppAkVb_Xrid7zFOtuT0tEmqyLuM2e3LmhIqLNO5r_QG0T6CSqZqkvUJewZqt_B4trFivQwi9nBPNDQjb6doYtEJiGxVp4CHja-Y9h1fPweErc_8FrMWmLJqXsNOkiNheXdkT6UKk4rWLdqOHtUz_uFa9mtCeksz7Yyxfclh2DD2vbPpFg2XjOFNv7VLIrHS4U3U_GldXU9IqxSjsysCB4lJZ_0LufXwlGJJcZQRNlLW3ysfsVidZMq9b5LZNT-IKZ1fc">
-</div>
-</div>
-</div>
-</header>
-<!-- END: Hero Section -->
-<!-- BEGIN: Ticker Section -->
-<section class="border-y border-white/20 bg-deep py-4 overflow-hidden relative z-20">
-<div class="flex whitespace-nowrap animate-ticker">
-<div class="flex gap-8 px-4 text-xl md:text-2xl font-bold uppercase tracking-wider text-white/80">
-<span class="">Implantación de Marcas</span> <span class="text-turquoise">✦</span>
-<span class="">Consultoría de Expansión</span> <span class="text-turquoise">✦</span>
-<span class="">Eventos</span> <span class="text-turquoise">✦</span>
-<span class="">Marketing Digital</span> <span class="text-turquoise">✦</span>
-<span class="">BTL &amp; Trade Marketing</span> <span class="text-turquoise">✦</span>
-<span class="">Análisis de Negocio</span> <span class="text-turquoise">✦</span>
-<!-- Duplicate for seamless loop -->
-<span class="">Implantación de Marcas</span> <span class="text-turquoise">✦</span>
-<span class="">Consultoría de Expansión</span> <span class="text-turquoise">✦</span>
-<span class="">Eventos</span> <span class="text-turquoise">✦</span>
-<span class="">Marketing Digital</span> <span class="text-turquoise">✦</span>
-<span class="">BTL &amp; Trade Marketing</span> <span class="text-turquoise">✦</span>
-<span class="">Análisis de Negocio</span> <span class="text-turquoise">✦</span>
-</div>
-</div>
-</section>
-<!-- END: Ticker Section -->
-<!-- BEGIN: About Section -->
-<section class="py-32 px-6 bg-light text-deep relative overflow-hidden" id="quienes-somos">
-<!-- Decorative side text -->
-<div class="absolute left-0 top-1/2 -translate-y-1/2 -rotate-90 text-[10rem] font-bold text-deep/5 select-none pointer-events-none">HELIKEM</div>
-<div class="max-w-6xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16">
-<div>
-<span class="inline-block px-3 py-1 bg-turquoise text-deep text-xs font-bold uppercase mb-8">Nuestra Visión</span>
-<h2 class="text-5xl md:text-6xl font-extrabold tracking-tighter mb-8 leading-tight">
+
+        <div class="flex gap-4">
+          <a
+            href="#contacto"
+            class="bg-deep text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-deep transition-colors duration-300 flex items-center gap-2"
+          >
+            Hablar con nosotros
+            <span class="text-xl">→</span>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- RIGHT -->
+      <div class="w-full md:w-1/3 relative">
+
+        <div class="w-full aspect-square rounded-3xl bg-teal overflow-hidden relative shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
+
+          <img
+            src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop"
+            alt="Strategic Growth"
+            class="w-full h-full object-cover opacity-80"
+          />
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <!-- TICKER -->
+  <section class="border-y border-white/20 bg-deep py-4 overflow-hidden relative z-20">
+
+    <div class="flex whitespace-nowrap animate-ticker">
+
+      <div class="flex gap-8 px-4 text-xl md:text-2xl font-bold uppercase tracking-wider text-white/80">
+
+        <span>Implantación de Marcas</span>
+        <span class="text-turquoise">✦</span>
+
+        <span>Consultoría de Expansión</span>
+        <span class="text-turquoise">✦</span>
+
+        <span>Eventos</span>
+        <span class="text-turquoise">✦</span>
+
+        <span>Marketing Digital</span>
+        <span class="text-turquoise">✦</span>
+
+        <span>BTL & Trade Marketing</span>
+        <span class="text-turquoise">✦</span>
+
+        <span>Análisis de Negocio</span>
+        <span class="text-turquoise">✦</span>
+
+        <!-- DUPLICATE -->
+        <span>Implantación de Marcas</span>
+        <span class="text-turquoise">✦</span>
+
+        <span>Consultoría de Expansión</span>
+        <span class="text-turquoise">✦</span>
+
+        <span>Eventos</span>
+        <span class="text-turquoise">✦</span>
+
+        <span>Marketing Digital</span>
+        <span class="text-turquoise">✦</span>
+
+        <span>BTL & Trade Marketing</span>
+        <span class="text-turquoise">✦</span>
+
+        <span>Análisis de Negocio</span>
+        <span class="text-turquoise">✦</span>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+  <section id="quienes-somos" class="py-32 px-6 bg-light text-deep relative overflow-hidden">
+
+    <div class="absolute left-0 top-1/2 -translate-y-1/2 -rotate-90 text-[10rem] font-bold text-deep/5 select-none pointer-events-none">
+      HELIKEM
+    </div>
+
+    <div class="max-w-6xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16">
+
+      <div>
+
+        <span class="inline-block px-3 py-1 bg-turquoise text-deep text-xs font-bold uppercase mb-8">
+          Nuestra Visión
+        </span>
+
+        <h2 class="text-5xl md:text-6xl font-extrabold tracking-tighter mb-8 leading-tight">
           Una agencia con visión de negocio
         </h2>
-<p class="text-xl md:text-2xl font-light leading-relaxed mb-8">
-          Entendemos Iberia porque llevamos años trabajando aquí. <span class="font-semibold">Conocemos sus mercados, sus medios, sus consumidores y sus reglas no escritas.</span>
-</p>
-</div>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-12 content-center pt-12 lg:pt-0">
-<!-- Point 01 -->
-<div class="border-t border-deep/20 pt-4">
-<div class="text-3xl font-light text-turquoise mb-2">01</div>
-<h3 class="text-xl font-bold mb-2">Agencia boutique</h3>
-<p class="text-sm opacity-70">Atención personalizada y dedicación exclusiva a cada proyecto.</p>
-</div>
-<!-- Point 02 -->
-<div class="border-t border-deep/20 pt-4">
-<div class="text-3xl font-light text-turquoise mb-2">02</div>
-<h3 class="text-xl font-bold mb-2">Red de contactos ibérica</h3>
-<p class="text-sm opacity-70">Conexiones clave en toda la península para facilitar operaciones.</p>
-</div>
-<!-- Point 03 -->
-<div class="border-t border-deep/20 pt-4">
-<div class="text-3xl font-light text-turquoise mb-2">03</div>
-<h3 class="text-xl font-bold mb-2">Orientación a resultados</h3>
-<p class="text-sm opacity-70">Enfocados en el crecimiento medible y el retorno de inversión.</p>
-</div>
-<!-- Point 04 -->
-<div class="border-t border-deep/20 pt-4">
-<div class="text-3xl font-light text-turquoise mb-2">04</div>
-<h3 class="text-xl font-bold mb-2">Visión estratégica</h3>
-<p class="text-sm opacity-70">Planificación a largo plazo para un posicionamiento sólido.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- END: About Section -->
-<!-- BEGIN: Services Section -->
-<section class="py-32 px-6 bg-deep text-white grid-bg" id="servicios">
-<div class="max-w-6xl mx-auto"><div class="flex flex-col lg:flex-row gap-gutter mb-16">
-<div class="flex flex-col justify-center w-full">
-<span class="inline-block px-3 py-1 bg-turquoise text-deep text-xs font-bold uppercase mb-4 w-fit">SERVICIOS</span>
-<h2 class="text-5xl md:text-6xl font-extrabold tracking-tighter leading-none mb-8">
-      Servicios que <br><span class="text-turquoise">generan impacto</span></h2>
-<p class="text-lg text-white/70 max-w-md">
-      Soluciones estratégicas diseñadas para transformar marcas y liderar mercados con innovación tecnológica y ejecución impecable.
-    </p>
-</div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"><div class="bg-[#0a0f14] p-10 rounded-xl border border-white/10 hover:border-turquoise transition-all group flex flex-col justify-between h-full min-h-[320px]"><div><div class="text-6xl font-bold text-turquoise mb-6">01</div><h3 class="text-2xl mb-4 font-bold">Implantación de Marcas</h3><p class="text-base text-white/60 mb-8">Lanzamiento y establecimiento sólido en el mercado ibérico con estrategias adaptadas localmente.</p></div><div class="flex items-center gap-2 text-turquoise font-bold uppercase text-xs tracking-wider">Ver más <span class="material-symbols-outlined text-sm">arrow_forward</span></div></div><div class="bg-[#0a0f14] p-10 rounded-xl border border-white/10 hover:border-turquoise transition-all group flex flex-col justify-between h-full min-h-[320px]"><div><div class="text-6xl font-bold text-turquoise mb-6">02</div><h3 class="text-2xl mb-4 font-bold">Consultoría de Expansión</h3><p class="text-base text-white/60 mb-8">Escalamos operaciones de forma segura y eficiente con planes de crecimiento a medida.</p></div><div class="flex items-center gap-2 text-turquoise font-bold uppercase text-xs tracking-wider">Ver más <span class="material-symbols-outlined text-sm">arrow_forward</span></div></div><div class="bg-[#0a0f14] p-10 rounded-xl border border-white/10 hover:border-turquoise transition-all group flex flex-col justify-between h-full min-h-[320px]"><div><div class="text-6xl font-bold text-turquoise mb-6">03</div><h3 class="text-2xl mb-4 font-bold">Eventos Corporativos</h3><p class="text-base text-white/60 mb-8">Experiencias memorables que conectan con stakeholders clave y refuerzan la marca.</p></div><div class="flex items-center gap-2 text-turquoise font-bold uppercase text-xs tracking-wider">Ver más <span class="material-symbols-outlined text-sm">arrow_forward</span></div></div><div class="bg-[#0a0f14] p-10 rounded-xl border border-white/10 hover:border-turquoise transition-all group flex flex-col justify-between h-full min-h-[320px]"><div><div class="text-6xl font-bold text-turquoise mb-6">04</div><h3 class="text-2xl mb-4 font-bold">Marketing Digital</h3><p class="text-base text-white/60 mb-8">Performance, presencia y captación de leads mediante estrategias multicanal efectivas.</p></div><div class="flex items-center gap-2 text-turquoise font-bold uppercase text-xs tracking-wider">Ver más <span class="material-symbols-outlined text-sm">arrow_forward</span></div></div><div class="bg-[#0a0f14] p-10 rounded-xl border border-white/10 hover:border-turquoise transition-all group flex flex-col justify-between h-full min-h-[320px]"><div><div class="text-6xl font-bold text-turquoise mb-6">05</div><h3 class="text-2xl mb-4 font-bold">BTL &amp; Trade Marketing</h3><p class="text-base text-white/60 mb-8">Acciones directas en el punto de venta para impulsar la conversión y el compromiso.</p></div><div class="flex items-center gap-2 text-turquoise font-bold uppercase text-xs tracking-wider">Ver más <span class="material-symbols-outlined text-sm">arrow_forward</span></div></div><div class="bg-[#0a0f14] p-10 rounded-xl border border-white/10 hover:border-turquoise transition-all group flex flex-col justify-between h-full min-h-[320px]"><div><div class="text-6xl font-bold text-turquoise mb-6">06</div><h3 class="text-2xl mb-4 font-bold">Análisis de Negocio</h3><p class="text-base text-white/60 mb-8">Auditorías y decisiones fundamentadas en datos para optimizar el rendimiento comercial.</p></div><div class="flex items-center gap-2 text-turquoise font-bold uppercase text-xs tracking-wider">Ver más <span class="material-symbols-outlined text-sm">arrow_forward</span></div></div></div></div>
-</section>
-<!-- END: Services Section -->
-<!-- BEGIN: Approach Section -->
-<section class="py-32 px-6 bg-light text-deep relative" id="enfoque">
-<div class="max-w-6xl mx-auto">
-<div class="text-center max-w-4xl mx-auto mb-20">
-<h2 class="text-5xl md:text-6xl font-extrabold tracking-tighter mb-6">
-          Estrategia primero,<br> Resultados siempre</h2>
-<p class="text-xl text-deep/70">
-          Somos el socio estratégico que entiende España y Portugal. Nuestro enfoque se basa en datos, experiencia local y ejecución impecable.
+
+        <p class="text-xl md:text-2xl font-light leading-relaxed mb-8">
+          Entendemos Iberia porque llevamos años trabajando aquí.
+          <span class="font-semibold">
+            Conocemos sus mercados, sus medios, sus consumidores y sus reglas no escritas.
+          </span>
         </p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-<!-- Approach Step 1 -->
-<div class="bg-white p-8 rounded-2xl shadow-sm border border-deep/5 hover:border-turquoise transition-colors duration-300">
-<div class="text-4xl font-light text-teal mb-6">01</div>
-<h3 class="text-xl font-bold mb-4">Diagnóstico estratégico</h3>
-<p class="text-deep/70 text-sm">Analizamos el mercado, competencia y oportunidades para definir el punto de partida.</p>
-</div>
-<!-- Approach Step 2 -->
-<div class="bg-white p-8 rounded-2xl shadow-sm border border-deep/5 hover:border-turquoise transition-colors duration-300">
-<div class="text-4xl font-light text-teal mb-6">02</div>
-<h3 class="text-xl font-bold mb-4">Plan personalizado</h3>
-<p class="text-deep/70 text-sm">Diseñamos una hoja de ruta a medida con KPIs claros y objetivos realistas.</p>
-</div>
-<!-- Approach Step 3 -->
-<div class="bg-white p-8 rounded-2xl shadow-sm border border-deep/5 hover:border-turquoise transition-colors duration-300">
-<div class="text-4xl font-light text-teal mb-6">03</div>
-<h3 class="text-xl font-bold mb-4">Ejecución con rigor</h3>
-<p class="text-deep/70 text-sm">Implementamos las acciones con un equipo experto y control de calidad exhaustivo.</p>
-</div>
-<!-- Approach Step 4 -->
-<div class="bg-white p-8 rounded-2xl shadow-sm border border-deep/5 hover:border-turquoise transition-colors duration-300">
-<div class="text-4xl font-light text-teal mb-6">04</div>
-<h3 class="text-xl font-bold mb-4">Medición y optimización</h3>
-<p class="text-deep/70 text-sm">Monitorizamos resultados en tiempo real para ajustar y maximizar el impacto.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- END: Approach Section -->
-<!-- BEGIN: Contact Section -->
-<section class="py-32 px-6 bg-deep text-white relative overflow-hidden" id="contacto">
-<!-- Abstract background element -->
-<div class="absolute right-0 bottom-0 w-1/2 h-full bg-teal opacity-10 rounded-tl-full blur-3xl pointer-events-none"></div>
-<div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10">
-<div>
-<span class="inline-block px-3 py-1 bg-white text-deep text-xs font-bold uppercase mb-8">Contacto</span>
-<h2 class="text-5xl md:text-7xl font-extrabold tracking-tighter mb-8 leading-tight">
-          Cuéntanos<br>tu proyecto.
+
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-12 content-center pt-12 lg:pt-0">
+
+        <div class="border-t border-deep/20 pt-4">
+          <div class="text-3xl font-light text-turquoise mb-2">01</div>
+          <h3 class="text-xl font-bold mb-2">Agencia boutique</h3>
+          <p class="text-sm opacity-70">
+            Atención personalizada y dedicación exclusiva a cada proyecto.
+          </p>
+        </div>
+
+        <div class="border-t border-deep/20 pt-4">
+          <div class="text-3xl font-light text-turquoise mb-2">02</div>
+          <h3 class="text-xl font-bold mb-2">Red de contactos ibérica</h3>
+          <p class="text-sm opacity-70">
+            Conexiones clave en toda la península para facilitar operaciones.
+          </p>
+        </div>
+
+        <div class="border-t border-deep/20 pt-4">
+          <div class="text-3xl font-light text-turquoise mb-2">03</div>
+          <h3 class="text-xl font-bold mb-2">Orientación a resultados</h3>
+          <p class="text-sm opacity-70">
+            Enfocados en crecimiento medible y retorno de inversión.
+          </p>
+        </div>
+
+        <div class="border-t border-deep/20 pt-4">
+          <div class="text-3xl font-light text-turquoise mb-2">04</div>
+          <h3 class="text-xl font-bold mb-2">Visión estratégica</h3>
+          <p class="text-sm opacity-70">
+            Planificación a largo plazo para un posicionamiento sólido.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SERVICES -->
+  <section id="servicios" class="py-32 px-6 bg-deep text-white grid-bg">
+
+    <div class="max-w-6xl mx-auto">
+
+      <div class="mb-16">
+
+        <span class="inline-block px-3 py-1 bg-turquoise text-deep text-xs font-bold uppercase mb-4">
+          Servicios
+        </span>
+
+        <h2 class="text-5xl md:text-6xl font-extrabold tracking-tighter leading-none mb-8">
+          Servicios que <br />
+          <span class="text-turquoise">generan impacto</span>
         </h2>
-<p class="text-xl text-white/70 mb-12 max-w-md">
-          Conectemos para llevar tu marca al siguiente nivel en el mercado ibérico.
+
+        <p class="text-lg text-white/70 max-w-md">
+          Soluciones estratégicas diseñadas para transformar marcas y liderar mercados.
         </p>
-<div class="space-y-6">
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 bg-white/10 flex items-center justify-center rounded-full text-turquoise">
-<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-</div>
-<div>
-<p class="text-sm text-white/50">Envíanos un mensaje</p>
-<p class="font-semibold">hello@helikem.com</p>
-</div>
-</div>
-</div>
-</div>
-<div class="bg-white p-8 md:p-10 rounded-3xl text-deep">
-<form class="space-y-6">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<div>
-<label class="block text-sm font-semibold mb-2" for="name">Nombre</label>
-<input class="w-full border-b border-deep/20 bg-transparent py-2 focus:outline-none focus:border-turquoise transition-colors" id="name" placeholder="Tu nombre" type="text">
-</div>
-<div>
-<label class="block text-sm font-semibold mb-2" for="company">Empresa</label>
-<input class="w-full border-b border-deep/20 bg-transparent py-2 focus:outline-none focus:border-turquoise transition-colors" id="company" placeholder="Tu empresa" type="text">
-</div>
-</div>
-<div>
-<label class="block text-sm font-semibold mb-2" for="email">Email</label>
-<input class="w-full border-b border-deep/20 bg-transparent py-2 focus:outline-none focus:border-turquoise transition-colors" id="email" placeholder="tu@email.com" type="email">
-</div>
-<div>
-<label class="block text-sm font-semibold mb-2" for="message">Mensaje</label>
-<textarea class="w-full border-b border-deep/20 bg-transparent py-2 focus:outline-none focus:border-turquoise transition-colors resize-none" id="message" placeholder="¿Cómo podemos ayudarte?" rows="4"></textarea>
-</div>
-<button class="w-full bg-deep text-white py-4 rounded-xl font-bold hover:bg-turquoise transition-colors duration-300 mt-4" type="button">
+
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- CARD -->
+        <div class="bg-[#0a0f14] p-10 rounded-xl border border-white/10 hover:border-turquoise transition-all min-h-[320px]">
+          <div class="text-6xl font-bold text-turquoise mb-6">01</div>
+          <h3 class="text-2xl mb-4 font-bold">Implantación de Marcas</h3>
+          <p class="text-base text-white/60">
+            Lanzamiento y establecimiento sólido en el mercado ibérico.
+          </p>
+        </div>
+
+        <div class="bg-[#0a0f14] p-10 rounded-xl border border-white/10 hover:border-turquoise transition-all min-h-[320px]">
+          <div class="text-6xl font-bold text-turquoise mb-6">02</div>
+          <h3 class="text-2xl mb-4 font-bold">Consultoría de Expansión</h3>
+          <p class="text-base text-white/60">
+            Escalamos operaciones con estrategias seguras y eficientes.
+          </p>
+        </div>
+
+        <div class="bg-[#0a0f14] p-10 rounded-xl border border-white/10 hover:border-turquoise transition-all min-h-[320px]">
+          <div class="text-6xl font-bold text-turquoise mb-6">03</div>
+          <h3 class="text-2xl mb-4 font-bold">Eventos Corporativos</h3>
+          <p class="text-base text-white/60">
+            Experiencias memorables que conectan con stakeholders clave.
+          </p>
+        </div>
+
+        <div class="bg-[#0a0f14] p-10 rounded-xl border border-white/10 hover:border-turquoise transition-all min-h-[320px]">
+          <div class="text-6xl font-bold text-turquoise mb-6">04</div>
+          <h3 class="text-2xl mb-4 font-bold">Marketing Digital</h3>
+          <p class="text-base text-white/60">
+            Performance, presencia y captación mediante estrategias multicanal.
+          </p>
+        </div>
+
+        <div class="bg-[#0a0f14] p-10 rounded-xl border border-white/10 hover:border-turquoise transition-all min-h-[320px]">
+          <div class="text-6xl font-bold text-turquoise mb-6">05</div>
+          <h3 class="text-2xl mb-4 font-bold">BTL & Trade Marketing</h3>
+          <p class="text-base text-white/60">
+            Acciones directas para impulsar conversión y engagement.
+          </p>
+        </div>
+
+        <div class="bg-[#0a0f14] p-10 rounded-xl border border-white/10 hover:border-turquoise transition-all min-h-[320px]">
+          <div class="text-6xl font-bold text-turquoise mb-6">06</div>
+          <h3 class="text-2xl mb-4 font-bold">Análisis de Negocio</h3>
+          <p class="text-base text-white/60">
+            Auditorías y decisiones basadas en datos reales.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- APPROACH -->
+  <section id="enfoque" class="py-32 px-6 bg-light text-deep">
+
+    <div class="max-w-6xl mx-auto">
+
+      <div class="text-center max-w-4xl mx-auto mb-20">
+
+        <h2 class="text-5xl md:text-6xl font-extrabold tracking-tighter mb-6">
+          Estrategia primero,<br />
+          resultados siempre
+        </h2>
+
+        <p class="text-xl text-deep/70">
+          Somos el socio estratégico que entiende España y Portugal.
+        </p>
+
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-deep/5">
+          <div class="text-4xl font-light text-teal mb-6">01</div>
+          <h3 class="text-xl font-bold mb-4">Diagnóstico estratégico</h3>
+          <p class="text-deep/70 text-sm">
+            Analizamos mercado, competencia y oportunidades.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-deep/5">
+          <div class="text-4xl font-light text-teal mb-6">02</div>
+          <h3 class="text-xl font-bold mb-4">Plan personalizado</h3>
+          <p class="text-deep/70 text-sm">
+            Diseñamos hojas de ruta con KPIs claros.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-deep/5">
+          <div class="text-4xl font-light text-teal mb-6">03</div>
+          <h3 class="text-xl font-bold mb-4">Ejecución con rigor</h3>
+          <p class="text-deep/70 text-sm">
+            Implementación experta y control de calidad.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-deep/5">
+          <div class="text-4xl font-light text-teal mb-6">04</div>
+          <h3 class="text-xl font-bold mb-4">Optimización continua</h3>
+          <p class="text-deep/70 text-sm">
+            Medición y mejora constante del rendimiento.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contacto" class="py-32 px-6 bg-deep text-white relative overflow-hidden">
+
+    <div class="absolute right-0 bottom-0 w-1/2 h-full bg-teal opacity-10 rounded-tl-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10">
+
+      <!-- LEFT -->
+      <div>
+
+        <span class="inline-block px-3 py-1 bg-white text-deep text-xs font-bold uppercase mb-8">
+          Contacto
+        </span>
+
+        <h2 class="text-5xl md:text-7xl font-extrabold tracking-tighter mb-8 leading-tight">
+          Cuéntanos<br />
+          tu proyecto.
+        </h2>
+
+        <p class="text-xl text-white/70 mb-12 max-w-md">
+          Conectemos para llevar tu marca al siguiente nivel.
+        </p>
+
+        <div class="space-y-6">
+
+          <div class="flex items-center gap-4">
+
+            <div class="w-12 h-12 bg-white/10 flex items-center justify-center rounded-full text-turquoise">
+
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8"
+                />
+
+              </svg>
+
+            </div>
+
+            <div>
+              <p class="text-sm text-white/50">Envíanos un mensaje</p>
+              <p class="font-semibold">hello@helikem.com</p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- FORM -->
+      <div class="bg-white p-8 md:p-10 rounded-3xl text-deep">
+
+        <form class="space-y-6" method="POST" action="#">
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <div>
+              <label for="name" class="block text-sm font-semibold mb-2">
+                Nombre
+              </label>
+
+              <input
+                id="name"
+                type="text"
+                placeholder="Tu nombre"
+                class="w-full border-b border-deep/20 bg-transparent py-2 focus:outline-none focus:border-turquoise transition-colors"
+              />
+            </div>
+
+            <div>
+              <label for="company" class="block text-sm font-semibold mb-2">
+                Empresa
+              </label>
+
+              <input
+                id="company"
+                type="text"
+                placeholder="Tu empresa"
+                class="w-full border-b border-deep/20 bg-transparent py-2 focus:outline-none focus:border-turquoise transition-colors"
+              />
+            </div>
+
+          </div>
+
+          <div>
+
+            <label for="email" class="block text-sm font-semibold mb-2">
+              Email
+            </label>
+
+            <input
+              id="email"
+              type="email"
+              placeholder="tu@email.com"
+              class="w-full border-b border-deep/20 bg-transparent py-2 focus:outline-none focus:border-turquoise transition-colors"
+            />
+
+          </div>
+
+          <div>
+
+            <label for="message" class="block text-sm font-semibold mb-2">
+              Mensaje
+            </label>
+
+            <textarea
+              id="message"
+              rows="4"
+              placeholder="¿Cómo podemos ayudarte?"
+              class="w-full border-b border-deep/20 bg-transparent py-2 focus:outline-none focus:border-turquoise transition-colors resize-none"
+            ></textarea>
+
+          </div>
+
+          <button
+            type="submit"
+            class="w-full bg-deep text-white py-4 rounded-xl font-bold hover:bg-turquoise hover:text-deep transition-colors duration-300"
+          >
             Enviar Mensaje
           </button>
-</form>
-</div>
-</div>
-</section>
-<!-- END: Contact Section -->
-<!-- BEGIN: Footer -->
-<footer class="bg-white text-deep py-12 px-6 border-t border-deep/10">
-<div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-<div class="text-2xl font-extrabold tracking-tighter">
-        HELIKEM</div>
-<div class="text-sm font-medium text-deep/60">
-        © 2024 HELIKEM Solutions. Todos los derechos reservados.
+
+        </form>
+
       </div>
-<div class="flex gap-4">
-<a class="text-deep/60 hover:text-turquoise transition-colors font-semibold text-sm" href="#">LinkedIn</a>
-<a class="text-deep/60 hover:text-turquoise transition-colors font-semibold text-sm" href="#">Instagram</a>
-</div>
-</div>
-</footer>
-<!-- END: Footer -->
 
+    </div>
 
-</body></html>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-white text-deep py-12 px-6 border-t border-deep/10">
+
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+
+      <div class="text-2xl font-extrabold tracking-tighter">
+        HELIKEM
+      </div>
+
+      <div class="text-sm font-medium text-deep/60">
+        © 2026 HELIKEM Solutions. Todos los derechos reservados.
+      </div>
+
+      <div class="flex gap-4">
+
+        <a href="#" class="text-deep/60 hover:text-turquoise transition-colors font-semibold text-sm">
+          LinkedIn
+        </a>
+
+        <a href="#" class="text-deep/60 hover:text-turquoise transition-colors font-semibold text-sm">
+          Instagram
+        </a>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+</body>
+
+</html>
