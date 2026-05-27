@@ -86,13 +86,17 @@
 
 <body class="antialiased overflow-x-hidden">
 
-  <!-- NAVBAR -->
-  <nav class="fixed top-0 left-0 w-full z-50 px-6 py-4 flex justify-between items-center bg-deep/70 backdrop-blur-md border-b border-white/10">
+<!-- NAVBAR -->
+<nav class="fixed top-0 left-0 w-full z-50 bg-deep/70 backdrop-blur-md border-b border-white/10">
 
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+    <!-- LOGO -->
     <div class="text-2xl font-extrabold tracking-tighter text-white">
       <span class="text-turquoise">HELIKEM</span>
     </div>
 
+    <!-- DESKTOP MENU -->
     <div class="hidden md:flex gap-8 text-sm font-semibold tracking-wide text-white">
 
       <a class="hover:text-turquoise transition-colors" href="#quienes-somos">
@@ -109,14 +113,93 @@
 
     </div>
 
-    <a
-      href="#contacto"
-      class="bg-turquoise text-deep px-6 py-2 rounded-full text-sm font-bold hover:bg-white transition-colors duration-300"
-    >
-      Contactar →
-    </a>
+    <!-- RIGHT SIDE -->
+    <div class="flex items-center gap-4">
 
-  </nav>
+      <!-- CONTACT BUTTON -->
+      <a
+        href="#contacto"
+        class="hidden md:flex bg-turquoise text-deep px-6 py-2 rounded-full text-sm font-bold hover:bg-white transition-colors duration-300"
+      >
+        Contactar →
+      </a>
+
+      <!-- MOBILE BUTTON -->
+      <button
+        id="mobile-menu-button"
+        class="md:hidden text-white focus:outline-none"
+      >
+
+        <svg
+          id="menu-open-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-8 w-8"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+
+        <svg
+          id="menu-close-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-8 w-8 hidden"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden border-t border-white/10 bg-deep/95 backdrop-blur-xl"
+  >
+
+    <div class="flex flex-col px-6 py-6 gap-6 text-white text-lg font-semibold">
+
+      <a href="#quienes-somos" class="hover:text-turquoise transition-colors">
+        Quiénes Somos
+      </a>
+
+      <a href="#servicios" class="hover:text-turquoise transition-colors">
+        Servicios
+      </a>
+
+      <a href="#enfoque" class="hover:text-turquoise transition-colors">
+        Enfoque
+      </a>
+
+      <a
+        href="#contacto"
+        class="bg-turquoise text-deep px-6 py-4 rounded-full font-bold text-center"
+      >
+        Contactar →
+      </a>
+
+    </div>
+
+  </div>
+
+</nav>
 
   <!-- HERO -->
   <header class="relative min-h-screen flex items-center justify-center overflow-hidden bg-turquoise text-deep px-6">
@@ -134,7 +217,7 @@
 
         <h1 class="text-5xl md:text-8xl font-extrabold tracking-tighter leading-none mb-8 uppercase">
           Del concepto <br />
-          al <span class="text-white">impacto.</span>
+          al <span class="text-white">impacto</span>
         </h1>
 
         <p class="text-lg md:text-xl font-medium max-w-xl mb-10 opacity-90">
@@ -303,8 +386,8 @@
         </span>
 
         <h2 class="text-5xl md:text-6xl font-extrabold tracking-tighter leading-none mb-8">
-          Servicios que <br />
-          <span class="text-turquoise">generan impacto</span>
+          Servicios que activan<br />
+          <span class="text-turquoise">el pontencial de tu marca</span>
         </h2>
 
         <p class="text-lg text-white/70 max-w-md">
@@ -444,7 +527,7 @@
 
         <h2 class="text-5xl md:text-7xl font-extrabold tracking-tighter mb-8 leading-tight">
           Cuéntanos<br />
-          tu proyecto.
+          tu proyecto
         </h2>
 
         <p class="text-xl text-white/70 mb-12 max-w-md">
