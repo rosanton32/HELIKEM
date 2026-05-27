@@ -514,136 +514,139 @@
   <!-- CONTACT -->
   <section id="contacto" class="py-32 px-6 bg-deep text-white relative overflow-hidden">
 
-    <div class="absolute right-0 bottom-0 w-1/2 h-full bg-teal opacity-10 rounded-tl-full blur-3xl pointer-events-none"></div>
+  <div class="absolute right-0 bottom-0 w-1/2 h-full bg-teal opacity-10 rounded-tl-full blur-3xl pointer-events-none"></div>
 
-    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 relative z-10">
 
-      <!-- LEFT -->
-      <div>
+    <!-- LEFT SIDE -->
+    <div>
 
-        <span class="inline-block px-3 py-1 bg-white text-deep text-xs font-bold uppercase mb-8">
-          Contacto
-        </span>
+      <span class="inline-block px-3 py-1 bg-turquoise text-deep text-xs font-bold uppercase mb-6">
+        Hablemos
+      </span>
 
-        <h2 class="text-5xl md:text-7xl font-extrabold tracking-tighter mb-8 leading-tight">
-          Cuéntanos<br />
-          tu proyecto
-        </h2>
+      <h2 class="text-5xl md:text-7xl font-extrabold tracking-tighter leading-tight mb-8">
+        ¿Listo para crecer<br />
+        en <span class="text-turquoise">Iberia?</span>
+      </h2>
 
-        <p class="text-xl text-white/70 mb-12 max-w-md">
-          Conectemos para llevar tu marca al siguiente nivel.
-        </p>
+      <p class="text-white/70 mb-12 max-w-md">
+        Cuéntanos tu proyecto. Analizamos tu situación y te presentamos una propuesta sin compromiso.
+      </p>
 
-        <div class="space-y-6">
+      <div class="space-y-5 text-sm">
 
-          <div class="flex items-center gap-4">
-
-            <div class="w-12 h-12 bg-white/10 flex items-center justify-center rounded-full text-turquoise">
-
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8"
-                />
-
-              </svg>
-
-            </div>
-
-            <div>
-              <p class="text-sm text-white/50">Envíanos un mensaje</p>
-              <p class="font-semibold">hello@helikem.com</p>
-            </div>
-
-          </div>
-
+        <div class="flex gap-6">
+          <span class="text-turquoise font-bold w-24">SEDE</span>
+          <span>Madrid, España</span>
         </div>
 
-      </div>
+        <div class="flex gap-6">
+          <span class="text-turquoise font-bold w-24">EMAIL</span>
+          <span>hello@helikem.com</span>
+        </div>
 
-      <!-- FORM -->
-      <div class="bg-white p-8 md:p-10 rounded-3xl text-deep">
+        <div class="flex gap-6">
+          <span class="text-turquoise font-bold w-24">TELÉFONO</span>
+          <span>+34 900 000 000</span>
+        </div>
 
-        <form class="space-y-6" method="POST" action="#">
+        <div class="flex gap-6">
+          <span class="text-turquoise font-bold w-24">MERCADOS</span>
+          <span>España · Portugal</span>
+        </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-            <div>
-              <label for="name" class="block text-sm font-semibold mb-2">
-                Nombre
-              </label>
-
-              <input
-                id="name"
-                type="text"
-                placeholder="Tu nombre"
-                class="w-full border-b border-deep/20 bg-transparent py-2 focus:outline-none focus:border-turquoise transition-colors"
-              />
-            </div>
-
-            <div>
-              <label for="company" class="block text-sm font-semibold mb-2">
-                Empresa
-              </label>
-
-              <input
-                id="company"
-                type="text"
-                placeholder="Tu empresa"
-                class="w-full border-b border-deep/20 bg-transparent py-2 focus:outline-none focus:border-turquoise transition-colors"
-              />
-            </div>
-
-          </div>
-
-          <div>
-
-            <label for="email" class="block text-sm font-semibold mb-2">
-              Email
-            </label>
-
-            <input
-              id="email"
-              type="email"
-              placeholder="tu@email.com"
-              class="w-full border-b border-deep/20 bg-transparent py-2 focus:outline-none focus:border-turquoise transition-colors"
-            />
-
-          </div>
-
-          <div>
-
-            <label for="message" class="block text-sm font-semibold mb-2">
-              Mensaje
-            </label>
-
-            <textarea
-              id="message"
-              rows="4"
-              placeholder="¿Cómo podemos ayudarte?"
-              class="w-full border-b border-deep/20 bg-transparent py-2 focus:outline-none focus:border-turquoise transition-colors resize-none"
-            ></textarea>
-
-          </div>
-
-          <button
-            type="submit"
-            class="w-full bg-deep text-white py-4 rounded-xl font-bold hover:bg-turquoise hover:text-deep transition-colors duration-300"
-          >
-            Enviar Mensaje
-          </button>
-
-        </form>
+        <div class="flex gap-6">
+          <span class="text-turquoise font-bold w-24">RESPUESTA</span>
+          <span>Menos de 48 horas</span>
+        </div>
 
       </div>
 
     </div>
 
-  </section>
+    <!-- RIGHT SIDE FORM -->
+    <div class="bg-[#0a0f14] p-10 rounded-3xl border border-white/10">
 
+      <form class="space-y-6">
+
+        <!-- ROW 1 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+          <input
+            type="text"
+            placeholder="Nombre"
+            class="w-full bg-deep border border-white/10 px-4 py-3 rounded-lg focus:border-turquoise outline-none"
+          />
+
+          <input
+            type="text"
+            placeholder="Empresa"
+            class="w-full bg-deep border border-white/10 px-4 py-3 rounded-lg focus:border-turquoise outline-none"
+          />
+
+        </div>
+
+        <!-- ROW 2 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+          <input
+            type="email"
+            placeholder="Email"
+            class="w-full bg-deep border border-white/10 px-4 py-3 rounded-lg focus:border-turquoise outline-none"
+          />
+
+          <input
+            type="tel"
+            placeholder="Teléfono"
+            class="w-full bg-deep border border-white/10 px-4 py-3 rounded-lg focus:border-turquoise outline-none"
+          />
+
+        </div>
+
+        <!-- HOW DID YOU KNOW -->
+        <select class="w-full bg-deep border border-white/10 px-4 py-3 rounded-lg text-white/70">
+          <option>¿Cómo nos has conocido?</option>
+          <option>Google</option>
+          <option>Redes Sociales</option>
+          <option>Recomendación</option>
+          <option>Otro</option>
+        </select>
+
+        <!-- SERVICE -->
+        <select class="w-full bg-deep border border-white/10 px-4 py-3 rounded-lg text-white/70">
+          <option>Servicio de interés</option>
+          <option>Implantación de marcas</option>
+          <option>Consultoría de expansión</option>
+          <option>Eventos corporativos</option>
+          <option>Marketing digital</option>
+          <option>BTL & Trade marketing</option>
+          <option>Análisis de negocio</option>
+        </select>
+
+        <!-- MESSAGE -->
+        <textarea
+          rows="5"
+          placeholder="Cuéntanos tu proyecto"
+          class="w-full bg-deep border border-white/10 px-4 py-3 rounded-lg focus:border-turquoise outline-none"
+        ></textarea>
+
+        <!-- BUTTON -->
+        <button
+          type="submit"
+          class="w-full bg-turquoise text-deep py-4 rounded-xl font-bold hover:bg-white transition-colors"
+        >
+          ENVIAR MENSAJE →
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</section>
+     
   <!-- FOOTER -->
   <footer class="bg-white text-deep py-12 px-6 border-t border-deep/10">
 
