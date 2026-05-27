@@ -673,6 +673,25 @@
 
   </footer>
 
+<script>
+
+  const mobileButton = document.getElementById("mobile-menu-button");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  const openIcon = document.getElementById("menu-open-icon");
+  const closeIcon = document.getElementById("menu-close-icon");
+
+  mobileButton.addEventListener("click", () => {
+
+    mobileMenu.classList.toggle("hidden");
+
+    openIcon.classList.toggle("hidden");
+    closeIcon.classList.toggle("hidden");
+
+  });
+
+</script>
+
 </body>
 
 </html>
