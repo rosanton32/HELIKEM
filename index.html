@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>HELIKEM Solutions - Del concepto al impacto</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Material Symbols -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700"
+    rel="stylesheet"
+  />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            turquoise: "#40E0D0",
+            deep: "#000306",
+            teal: "#226E7B",
+            light: "#F7F7F7",
+          },
+          fontFamily: {
+            sans: ["Inter", "sans-serif"],
+          },
+          /* ── Animations ported from BackgroundGradientAnimation ── */
+          animation: {
+            first:  "moveVertical 30s ease infinite",
+            second: "moveInCircle 20s reverse infinite",
+            third:  "moveInCircle 40s linear infinite",
+            fourth: "moveHorizontal 40s ease infinite",
+            fifth:  "moveInCircle 20s ease infinite",
+            ticker: "ticker 30s linear infinite",
+          },
+          keyframes: {
+            moveHorizontal: {
+              "0%":   { transform: "translateX(-50%) translateY(-10%)" },
+              "50%":  { transform: "translateX(50%)  translateY(10%)"  },
+              "100%": { transform: "translateX(-50%) translateY(-10%)" },
+            },
+            moveInCircle: {
+              "0%":   { transform: "rotate(0deg)"   },
+              "50%":  { transform: "rotate(180deg)" },
+              "100%": { transform: "rotate(360deg)" },
+            },
+            moveVertical: {
+              "0%":   { transform: "translateY(-50%)" },
+              "50%":  { transform: "translateY(50%)"  },
+              "100%": { transform: "translateY(-50%)" },
+            },
+            ticker: {
+              "0%":   { transform: "translateX(0)"   },
+              "100%": { transform: "translateX(-50%)" },
+            },
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: #000306;
+      color: #ffffff;
+      font-family: "Inter", sans-serif;
+    }
+
+    /* Grid Background */
+    .grid-bg {
+      background-image:
+        linear-gradient(to right,  rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 100px 100px;
+    }
+
+    /* ── BackgroundGradientAnimation ───────────────────────────────
+       CSS variables are set on #hero-bg via JS.
+       The blobs use mix-blend-mode so the gradient base shows through.
+    ─────────────────────────────────────────────────────────────── */
+    #hero-bg {
+      --gradient-background-start: rgb(0, 3, 6);      /* #000306 */
+      --gradient-background-end:   rgb(34, 110, 123);  /* #226E7B */
+      --first-color:   34,  110, 123;   /* teal      #226E7B */
+      --second-color:  64,  224, 208;   /* turquoise #40E0D0 */
+      --third-color:  154,  207, 203;   /* light     #9ACFCB */
+      --fourth-color:  47,   58,  64;   /* navy      #2F3A40 */
+      --fifth-color:  180,  212, 212;   /* blue-gray #B4CDD4 */
+      --pointer-color: 64,  224, 208;   /* turquoise #40E0D0 */
+      --size: 80%;
+      --blending: hard-light;
+
+      background: linear-gradient(
+        40deg,
+        var(--gradient-background-start),
+        var(--gradient-background-end)
+      );
+    }
+
+    /* Blobs */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      width: var(--size);
+      height: var(--size);
+      top:  calc(50% - var(--size) / 2);
+      left: calc(50% - var(--size) / 2);
+      mix-blend-mode: var(--blending);
+      opacity: 1;
+    }
+
+    .blob-1 {
+      background: radial-gradient(circle at center, rgb(var(--first-color)) 0, rgb(var(--first-color)) 50%) no-repeat;
+      transform-origin: center center;
+      animation: moveVertical 30s ease infinite;
+    }
+    .blob-2 {
+      background: radial-gradient(circle at center, rgba(var(--second-color),0.8) 0, rgba(var(--second-color),0) 50%) no-repeat;
+      transform-origin: calc(50% - 400px);
+      animation: moveInCircle 20s reverse infinite;
+    }
+    .blob-3 {
+      background: radial-gradient(circle at center, rgba(var(--third-color),0.8) 0, rgba(var(--third-color),0) 50%) no-repeat;
+      transform-origin: calc(50% + 400px);
+      animation: moveInCircle 40s linear infinite;
+    }
+    .blob-4 {
+      background: radial-gradient(circle at center, rgba(var(--fourth-color),0.8) 0, rgba(var(--fourth-color),0) 50%) no-repeat;
+      transform-origin: calc(50% - 200px);
+      animation: moveHorizontal 40s ease infinite;
+      opacity: 0.7;
+    }
+    .blob-5 {
+      background: radial-gradient(circle at center, rgba(var(--fifth-color),0.8) 0, rgba(var(--fifth-color),0) 50%) no-repeat;
+      transform-origin: calc(50% - 800px) calc(50% + 800px);
+      animation: moveInCircle 20s ease infinite;
+    }
+
+    .blob-pointer {
+      position: absolute;
+      width: 100%; height: 100%;
+      top: -50%; left: -50%;
+      background: radial-gradient(circle at center, rgba(var(--pointer-color),0.8) 0, rgba(var(--pointer-color),0) 50%) no-repeat;
+      mix-blend-mode: var(--blending);
+      opacity: 0.7;
+    }
+
+    @keyframes moveVertical {
+      0%   { transform: translateY(-50%); }
+      50%  { transform: translateY(50%);  }
+      100% { transform: translateY(-50%); }
+    }
+    @keyframes moveInCircle {
+      0%   { transform: rotate(0deg);   }
+      50%  { transform: rotate(180deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes moveHorizontal {
+      0%   { transform: translateX(-50%) translateY(-10%); }
+      50%  { transform: translateX(50%)  translateY(10%);  }
+      100% { transform: translateX(-50%) translateY(-10%); }
+    }
+
+    /* Ticker */
+    @keyframes ticker {
+      0%   { transform: translateX(0);    }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-ticker { animation: ticker 30s linear infinite; }
+  </style>
+</head>
+
+<body class="antialiased overflow-x-hidden">
+
+<!-- NAVBAR -->
+<nav class="fixed top-0 left-0 w-full z-50 bg-deep/70 backdrop-blur-md border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+    <!-- LOGO -->
+    <div class="text-2xl font-extrabold tracking-tighter text-white">
+      <span class="text-turquoise">HELIKEM</span>
+    </div>
+
+    <!-- DESKTOP MENU -->
+    <div class="hidden md:flex gap-8 text-sm font-semibold tracking-wide text-white">
+      <a class="hover:text-turquoise transition-colors" href="#quienes-somos">Quiénes Somos</a>
+      <a class="hover:text-turquoise transition-colors" href="#servicios">Servicios</a>
+      <a class="hover:text-turquoise transition-colors" href="#enfoque">Enfoque</a>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="flex items-center gap-4">
+      <a
+        href="#contacto"
+        class="hidden md:flex bg-turquoise text-deep px-6 py-2 rounded-full text-sm font-bold hover:bg-white transition-colors duration-300"
+      >Contactar →</a>
+
+      <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+        <svg id="menu-open-icon"  xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+        <svg id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-deep/95 backdrop-blur-xl">
+    <div class="flex flex-col px-6 py-6 gap-6 text-white text-lg font-semibold">
+      <a href="#quienes-somos" class="hover:text-turquoise transition-colors">Quiénes Somos</a>
+      <a href="#servicios"     class="hover:text-turquoise transition-colors">Servicios</a>
+      <a href="#enfoque"       class="hover:text-turquoise transition-colors">Enfoque</a>
+      <a href="#contacto" class="bg-turquoise text-deep px-6 py-4 rounded-full font-bold text-center block">Contactar →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     HERO  —  BackgroundGradientAnimation (vanilla port)
+═════════════════════════════════════════════════════════════════ -->
+<header
+  id="hero-bg"
+  class="relative min-h-screen flex items-center justify-center overflow-hidden px-6"
+>
+  <!-- Hidden SVG filter for goo effect (mirrors the React component) -->
+  <svg class="hidden">
+    <defs>
+      <filter id="blurMe">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"/>
+        <feColorMatrix in="blur" mode="matrix"
+          values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8"
+          result="goo"/>
+        <feBlend in="SourceGraphic" in2="goo"/>
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- Gradient blobs container -->
+  <div
+    id="blobs-container"
+    class="absolute inset-0 w-full h-full"
+    style="filter: url(#blurMe) blur(40px);"
+  >
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+    <div class="blob blob-5"></div>
+    <!-- Interactive pointer blob -->
+    <div id="pointer-blob" class="blob-pointer"></div>
+  </div>
+
+  <!-- Hero content (sits above blobs) -->
+  <div class="relative z-10 max-w-6xl mx-auto w-full flex flex-col md:flex-row items-center gap-12 pt-24">
+
+    <!-- LEFT -->
+    <div class="w-full md:w-2/3 text-white">
+
+      <span class="inline-block px-4 py-1 border border-white/40 rounded-full text-xs font-bold uppercase tracking-widest mb-6 text-white/80">
+        ESPAÑA · PORTUGAL
+      </span>
+
+      <h1 class="text-5xl md:text-8xl font-extrabold tracking-tighter leading-none mb-8 uppercase">
+        Del concepto <br />
+        al <span class="text-turquoise">impacto</span>
+      </h1>
+
+      <p class="text-lg md:text-xl font-medium max-w-xl mb-10 text-white/80">
+        Consultoría estratégica, marketing y eventos para marcas que quieren crecer,
+        posicionarse y liderar en el mercado de Iberia.
+      </p>
+
+      <div class="flex gap-4">
+        <a
+          href="#contacto"
+          class="bg-turquoise text-deep px-8 py-4 rounded-full font-bold hover:bg-white hover:text-deep transition-colors duration-300 flex items-center gap-2"
+        >Hablar con nosotros <span class="text-xl">→</span></a>
+      </div>
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="w-full md:w-1/3 relative">
+      <div class="w-full aspect-square rounded-3xl bg-teal overflow-hidden relative shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
+        <img
+          src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop"
+          alt="Strategic Growth"
+          class="w-full h-full object-cover opacity-80"
+        />
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<!-- TICKER -->
+<section class="border-y border-white/20 bg-deep py-4 overflow-hidden relative z-20">
+  <div class="flex whitespace-nowrap animate-ticker">
+    <div class="flex gap-8 px-4 text-xl md:text-2xl font-bold uppercase tracking-wider text-white/80">
+      <span>Implantación de Marcas</span>  <span class="text-turquoise">✦</span>
+      <span>Consultoría de Expansión</span> <span class="text-turquoise">✦</span>
+      <span>Eventos</span>                  <span class="text-turquoise">✦</span>
+      <span>Marketing Digital</span>        <span class="text-turquoise">✦</span>
+      <span>BTL & Trade Marketing</span>    <span class="text-turquoise">✦</span>
+      <span>Análisis de Negocio</span>      <span class="text-turquoise">✦</span>
+      <!-- duplicate -->
+      <span>Implantación de Marcas</span>  <span class="text-turquoise">✦</span>
+      <span>Consultoría de Expansión</span> <span class="text-turquoise">✦</span>
+      <span>Eventos</span>                  <span class="text-turquoise">✦</span>
+      <span>Marketing Digital</span>        <span class="text-turquoise">✦</span>
+      <span>BTL & Trade Marketing</span>    <span class="text-turquoise">✦</span>
+      <span>Análisis de Negocio</span>      <span class="text-turquoise">✦</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="quienes-somos" class="py-32 px-6 bg-light text-deep relative overflow-hidden">
+  <div class="absolute left-0 top-1/2 -translate-y-1/2 -rotate-90 text-[10rem] font-bold text-deep/5 select-none pointer-events-none">
+    HELIKEM
+  </div>
+  <div class="max-w-6xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16">
+
+    <div>
+      <span class="inline-block px-3 py-1 bg-turquoise text-deep text-xs font-bold uppercase mb-8">
+        Nuestra Visión
+      </span>
+      <h2 class="text-5xl md:text-6xl font-extrabold tracking-tighter mb-8 leading-tight">
+        Una agencia con visión de negocio
+      </h2>
+      <p class="text-xl md:text-2xl font-light leading-relaxed mb-8">
+        Entendemos Iberia porque llevamos años trabajando aquí.
+        <span class="font-semibold">
+          Conocemos sus mercados, sus medios, sus consumidores y sus reglas no escritas.
+        </span>
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-12 content-center pt-12 lg:pt-0">
+
+      <div class="border-t border-deep/20 pt-4">
+        <div class="text-3xl font-light text-turquoise mb-2">01</div>
+        <h3 class="text-xl font-bold mb-2">Agencia boutique</h3>
+        <p class="text-sm opacity-70">Atención personalizada y dedicación exclusiva a cada proyecto.</p>
+      </div>
+
+      <div class="border-t border-deep/20 pt-4">
+        <div class="text-3xl font-light text-turquoise mb-2">02</div>
+        <h3 class="text-xl font-bold mb-2">Red de contactos ibérica</h3>
+        <p class="text-sm opacity-70">Conexiones clave en toda la península para facilitar operaciones.</p>
+      </div>
+
+      <div class="border-t border-deep/20 pt-4">
+        <div class="text-3xl font-light text-turquoise mb-2">03</div>
+        <h3 class="text-xl font-bold mb-2">Orientación a resultados</h3>
+        <p class="text-sm opacity-70">Enfocados en crecimiento medible y retorno de inversión.</p>
+      </div>
+
+      <div class="border-t border-deep/20 pt-4">
+        <div class="text-3xl font-light text-turquoise mb-2">04</div>
+        <h3 class="text-xl font-bold mb-2">Visión estratégica</h3>
+        <p class="text-sm opacity-70">Planificación a largo plazo para un posicionamiento sólido.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── GlowCard CSS (ported from spotlight-card.tsx) ───────────── -->
+<style>
+  /* Shared spotlight-card variables — hue 177 = #40E0D0 turquoise */
+  [data-glow] {
+    --base:             177;
+    --spread:           60;
+    --radius:           16;
+    --border:           1;
+    --backdrop:         rgba(10, 15, 20, 0.85);
+    --backup-border:    rgba(255,255,255,0.08);
+    --size:             260;
+    --outer:            1;
+    --border-size:      calc(var(--border, 1) * 1px);
+    --spotlight-size:   calc(var(--size, 200) * 1px);
+    --hue:              calc(var(--base) + (var(--xp, 0.5) * var(--spread, 60)));
+
+    background-image: radial-gradient(
+      var(--spotlight-size) var(--spotlight-size)
+      at calc(var(--x,0) * 1px) calc(var(--y,0) * 1px),
+      hsl(var(--hue) 80% 65% / 0.10),
+      transparent
+    );
+    background-color:   var(--backdrop);
+    background-size:    calc(100% + 2*var(--border-size)) calc(100% + 2*var(--border-size));
+    background-position: 50% 50%;
+    background-attachment: fixed;
+    border:             var(--border-size) solid var(--backup-border);
+    border-radius:      calc(var(--radius) * 1px);
+    position:           relative;
+    touch-action:       none;
+    transition:         border-color 0.3s ease;
+  }
+
+  /* Spotlight border glow — ::before */
+  [data-glow]::before,
+  [data-glow]::after {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    inset: calc(var(--border-size) * -1);
+    border: var(--border-size) solid transparent;
+    border-radius: calc(var(--radius) * 1px);
+    background-attachment: fixed;
+    background-size:     calc(100% + 2*var(--border-size)) calc(100% + 2*var(--border-size));
+    background-repeat:   no-repeat;
+    background-position: 50% 50%;
+    mask: linear-gradient(transparent, transparent),
+          linear-gradient(white, white);
+    mask-clip:      padding-box, border-box;
+    mask-composite: intersect;
+  }
+
+  [data-glow]::before {
+    background-image: radial-gradient(
+      calc(var(--spotlight-size) * 0.75) calc(var(--spotlight-size) * 0.75)
+      at calc(var(--x,0) * 1px) calc(var(--y,0) * 1px),
+      hsl(var(--hue) 80% 55% / 1), transparent 100%
+    );
+    filter: brightness(2);
+  }
+
+  [data-glow]::after {
+    background-image: radial-gradient(
+      calc(var(--spotlight-size) * 0.5) calc(var(--spotlight-size) * 0.5)
+      at calc(var(--x,0) * 1px) calc(var(--y,0) * 1px),
+      hsl(0 100% 100% / 0.6), transparent 100%
+    );
+  }
+
+  /* Inner glow layer */
+  [data-glow] > [data-glow-inner] {
+    position: absolute; inset: 0;
+    will-change: filter;
+    opacity: var(--outer, 1);
+    border-radius: calc(var(--radius) * 1px);
+    filter: blur(calc(var(--border-size) * 8));
+    background: none;
+    pointer-events: none;
+    border: none;
+  }
+
+  /* Card content sits above glow layers */
+  [data-glow] .glow-content {
+    position: relative;
+    z-index: 1;
+  }
+</style>
+
+<!-- SERVICES -->
+<section id="servicios" class="py-32 px-6 bg-deep text-white grid-bg">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="mb-16">
+      <span class="inline-block px-3 py-1 bg-turquoise text-deep text-xs font-bold uppercase mb-4">
+        Servicios
+      </span>
+      <h2 class="text-5xl md:text-6xl font-extrabold tracking-tighter leading-none mb-8">
+        Servicios que activan<br />
+        <span class="text-turquoise">el potencial de tu marca</span>
+      </h2>
+      <p class="text-lg text-white/70 max-w-md">
+        Soluciones estratégicas diseñadas para transformar marcas y liderar mercados.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <div data-glow class="p-10 min-h-[320px]">
+        <div data-glow-inner></div>
+        <div class="glow-content">
+          <div class="text-6xl font-bold text-turquoise mb-6">01</div>
+          <h3 class="text-2xl mb-4 font-bold text-white">Implantación de Marcas</h3>
+          <p class="text-base text-white/60">Lanzamiento y establecimiento sólido en el mercado ibérico.</p>
+        </div>
+      </div>
+
+      <div data-glow class="p-10 min-h-[320px]">
+        <div data-glow-inner></div>
+        <div class="glow-content">
+          <div class="text-6xl font-bold text-turquoise mb-6">02</div>
+          <h3 class="text-2xl mb-4 font-bold text-white">Consultoría de Expansión</h3>
+          <p class="text-base text-white/60">Escalamos operaciones con estrategias seguras y eficientes.</p>
+        </div>
+      </div>
+
+      <div data-glow class="p-10 min-h-[320px]">
+        <div data-glow-inner></div>
+        <div class="glow-content">
+          <div class="text-6xl font-bold text-turquoise mb-6">03</div>
+          <h3 class="text-2xl mb-4 font-bold text-white">Eventos Corporativos</h3>
+          <p class="text-base text-white/60">Experiencias memorables que conectan con stakeholders clave.</p>
+        </div>
+      </div>
+
+      <div data-glow class="p-10 min-h-[320px]">
+        <div data-glow-inner></div>
+        <div class="glow-content">
+          <div class="text-6xl font-bold text-turquoise mb-6">04</div>
+          <h3 class="text-2xl mb-4 font-bold text-white">Marketing Digital</h3>
+          <p class="text-base text-white/60">Performance, presencia y captación mediante estrategias multicanal.</p>
+        </div>
+      </div>
+
+      <div data-glow class="p-10 min-h-[320px]">
+        <div data-glow-inner></div>
+        <div class="glow-content">
+          <div class="text-6xl font-bold text-turquoise mb-6">05</div>
+          <h3 class="text-2xl mb-4 font-bold text-white">BTL & Trade Marketing</h3>
+          <p class="text-base text-white/60">Acciones directas para impulsar conversión y engagement.</p>
+        </div>
+      </div>
+
+      <div data-glow class="p-10 min-h-[320px]">
+        <div data-glow-inner></div>
+        <div class="glow-content">
+          <div class="text-6xl font-bold text-turquoise mb-6">06</div>
+          <h3 class="text-2xl mb-4 font-bold text-white">Análisis de Negocio</h3>
+          <p class="text-base text-white/60">Auditorías y decisiones basadas en datos reales.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CardSticky CSS ──────────────────────────────────────────── -->
+<style>
+  .stack-card {
+    position: sticky;
+    backface-visibility: hidden;
+  }
+</style>
+
+<!-- APPROACH -->
+<section id="enfoque" class="bg-light text-deep">
+
+  <!--
+    Two-column grid: left is sticky (mirrors ContainerScroll left),
+    right is the tall scroll area with stacking cards.
+    Total height ~320vh gives enough room for 4 cards to fully stack.
+  -->
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 xl:gap-16">
+
+      <!-- LEFT — sticky heading (same pattern as Process demo) -->
+      <div class="md:sticky md:top-0 md:h-screen flex flex-col justify-center py-20">
+
+        <span class="text-xs font-bold uppercase tracking-widest text-teal mb-4">
+          Nuestro Enfoque
+        </span>
+
+        <h2 class="text-5xl md:text-6xl font-extrabold tracking-tighter leading-tight mb-6">
+          Estrategia primero,<br />
+          <span class="text-teal">resultados siempre</span>
+        </h2>
+
+        <p class="text-deep/60 text-lg max-w-sm leading-relaxed">
+          Somos el socio estratégico que entiende España y Portugal de principio a fin.
+        </p>
+
+      </div>
+
+      <!--
+        RIGHT — ContainerScroll equivalent.
+        min-height drives the scroll budget: ~80vh per card feels natural.
+        space-y-8 + py-20 mirrors "space-y-8 py-12" from the React demo.
+        Cards use perspective via inline style.
+      -->
+      <div
+        class="relative space-y-8 py-20"
+        style="min-height: 340vh; perspective: 1000px;"
+      >
+
+        <!-- Card 1 — index 2 → top:20px z:20 -->
+        <div
+          class="stack-card bg-white rounded-2xl border border-deep/8 shadow-md p-8 md:p-10"
+          style="top: 20px; z-index: 20;"
+        >
+          <div class="flex items-center justify-between gap-4 mb-6">
+            <div class="flex items-center gap-3">
+              <span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-turquoise/15 text-teal shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+                </svg>
+              </span>
+              <h3 class="text-xl font-bold">Diagnóstico estratégico</h3>
+            </div>
+          </div>
+          <p class="text-deep/60 text-base leading-relaxed">
+            Analizamos tu mercado, la competencia y las oportunidades disponibles para construir una base sólida. Cada decisión parte de datos reales, no de suposiciones.
+          </p>
+          <div class="mt-6 h-px bg-gradient-to-r from-turquoise/50 to-transparent"></div>
+        </div>
+
+        <!-- Card 2 — index 3 → top:30px z:30 -->
+        <div
+          class="stack-card bg-white rounded-2xl border border-deep/8 shadow-md p-8 md:p-10"
+          style="top: 30px; z-index: 30;"
+        >
+          <div class="flex items-center gap-3 mb-6">
+            <span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-turquoise/15 text-teal shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path d="M9 20l-5.447-2.724A1 1 0 0 1 3 16.382V5.618a1 1 0 0 1 1.447-.894L9 7m0 13V7m0 13 6-3m-6-10 6-3m0 0 5.447 2.724A1 1 0 0 1 21 7.618v10.764a1 1 0 0 1-1.447.894L15 17m0-13v13"/>
+              </svg>
+            </span>
+            <h3 class="text-xl font-bold">Plan personalizado</h3>
+          </div>
+          <p class="text-deep/60 text-base leading-relaxed">
+            Diseñamos una hoja de ruta a medida con KPIs claros y etapas definidas. El plan es tan ambicioso como pragmático: resultados medibles desde el primer trimestre.
+          </p>
+          <div class="mt-6 h-px bg-gradient-to-r from-turquoise/50 to-transparent"></div>
+        </div>
+
+        <!-- Card 3 — index 4 → top:40px z:40 -->
+        <div
+          class="stack-card bg-white rounded-2xl border border-deep/8 shadow-md p-8 md:p-10"
+          style="top: 40px; z-index: 40;"
+        >
+          <div class="flex items-center gap-3 mb-6">
+            <span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-turquoise/15 text-teal shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/>
+              </svg>
+            </span>
+            <h3 class="text-xl font-bold">Ejecución con rigor</h3>
+          </div>
+          <p class="text-deep/60 text-base leading-relaxed">
+            Implementamos con precisión y control de calidad en cada fase. Nuestro equipo local gestiona la operativa en España y Portugal minimizando fricciones y tiempos muertos.
+          </p>
+          <div class="mt-6 h-px bg-gradient-to-r from-turquoise/50 to-transparent"></div>
+        </div>
+
+        <!-- Card 4 — index 5 → top:50px z:50 -->
+        <div
+          class="stack-card bg-white rounded-2xl border border-deep/8 shadow-md p-8 md:p-10"
+          style="top: 50px; z-index: 50;"
+        >
+          <div class="flex items-center gap-3 mb-6">
+            <span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-turquoise/15 text-teal shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>
+              </svg>
+            </span>
+            <h3 class="text-xl font-bold">Optimización continua</h3>
+          </div>
+          <p class="text-deep/60 text-base leading-relaxed">
+            Medimos, aprendemos y mejoramos de forma constante. Los dashboards de rendimiento y las revisiones periódicas garantizan que la estrategia evolucione con el mercado.
+          </p>
+          <div class="mt-6 h-px bg-gradient-to-r from-turquoise/50 to-transparent"></div>
+        </div>
+
+      </div><!-- /stack right -->
+
+    </div>
+  </div>
+
+</section>
+
+<!-- CONTACT -->
+<section id="contacto" class="py-32 px-6 bg-deep text-white relative overflow-hidden">
+  <div class="absolute right-0 bottom-0 w-1/2 h-full bg-teal opacity-10 rounded-tl-full blur-3xl pointer-events-none"></div>
+
+  <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 relative z-10">
+
+    <!-- LEFT SIDE -->
+    <div>
+      <span class="inline-block px-3 py-1 bg-turquoise text-deep text-xs font-bold uppercase mb-6">
+        Hablemos
+      </span>
+      <h2 class="text-5xl md:text-7xl font-extrabold tracking-tighter leading-tight mb-8">
+        Cuéntanos tu<br /><span class="text-turquoise">proyecto</span>
+      </h2>
+      <p class="text-white/70 mb-12 max-w-md">
+        Analizamos tu situación y te presentamos una propuesta sin compromiso.
+      </p>
+      <div class="space-y-5 text-sm">
+        <div class="flex gap-6"><span class="text-turquoise font-bold w-24">SEDE</span><span>Madrid, España</span></div>
+        <div class="flex gap-6"><span class="text-turquoise font-bold w-24">EMAIL</span><span>hello@helikem.com</span></div>
+        <div class="flex gap-6"><span class="text-turquoise font-bold w-24">TELÉFONO</span><span>+34 900 000 000</span></div>
+        <div class="flex gap-6"><span class="text-turquoise font-bold w-24">MERCADOS</span><span>España · Portugal</span></div>
+        <div class="flex gap-6"><span class="text-turquoise font-bold w-24">RESPUESTA</span><span>Menos de 48 horas</span></div>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE FORM -->
+    <div class="bg-[#0a0f14] p-10 rounded-3xl border border-white/10">
+      <form class="space-y-6">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <input type="text"  placeholder="Nombre"  class="w-full bg-deep border border-white/10 px-4 py-3 rounded-lg focus:border-turquoise outline-none"/>
+          <input type="text"  placeholder="Empresa" class="w-full bg-deep border border-white/10 px-4 py-3 rounded-lg focus:border-turquoise outline-none"/>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <input type="email" placeholder="Email"    class="w-full bg-deep border border-white/10 px-4 py-3 rounded-lg focus:border-turquoise outline-none"/>
+          <input type="tel"   placeholder="Teléfono" class="w-full bg-deep border border-white/10 px-4 py-3 rounded-lg focus:border-turquoise outline-none"/>
+        </div>
+
+        <select class="w-full bg-deep border border-white/10 px-4 py-3 rounded-lg text-white/70">
+          <option>¿Cómo nos has conocido?</option>
+          <option>Google</option>
+          <option>Redes Sociales</option>
+          <option>Recomendación</option>
+          <option>Otro</option>
+        </select>
+
+        <select class="w-full bg-deep border border-white/10 px-4 py-3 rounded-lg text-white/70">
+          <option>Servicio de interés</option>
+          <option>Implantación de marcas</option>
+          <option>Consultoría de expansión</option>
+          <option>Eventos corporativos</option>
+          <option>Marketing digital</option>
+          <option>BTL & Trade marketing</option>
+          <option>Análisis de negocio</option>
+        </select>
+
+        <textarea
+          rows="5"
+          placeholder="Cuéntanos tu proyecto"
+          class="w-full bg-deep border border-white/10 px-4 py-3 rounded-lg focus:border-turquoise outline-none"
+        ></textarea>
+
+        <button
+          type="submit"
+          class="w-full bg-turquoise text-deep py-4 rounded-xl font-bold hover:bg-white transition-colors"
+        >ENVIAR MENSAJE →</button>
+
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-white text-deep py-12 px-6 border-t border-deep/10">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+    <div class="text-2xl font-extrabold tracking-tighter">HELIKEM</div>
+    <div class="text-sm font-medium text-deep/60">© 2026 HELIKEM Solutions. Todos los derechos reservados.</div>
+    <div class="flex gap-4">
+      <a href="#" class="text-deep/60 hover:text-turquoise transition-colors font-semibold text-sm">LinkedIn</a>
+      <a href="#" class="text-deep/60 hover:text-turquoise transition-colors font-semibold text-sm">Instagram</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ── Mobile menu ─────────────────────────────────────────────── */
+  const mobileButton = document.getElementById("mobile-menu-button");
+  const mobileMenu   = document.getElementById("mobile-menu");
+  const openIcon     = document.getElementById("menu-open-icon");
+  const closeIcon    = document.getElementById("menu-close-icon");
+
+  mobileButton.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+    openIcon.classList.toggle("hidden");
+    closeIcon.classList.toggle("hidden");
+  });
+
+  /* ── BackgroundGradientAnimation — interactive pointer blob ─── */
+  const heroBg      = document.getElementById("hero-bg");
+  const pointerBlob = document.getElementById("pointer-blob");
+
+  let curX = 0, curY = 0;
+  let tgX  = 0, tgY  = 0;
+
+  function movePointer() {
+    curX += (tgX - curX) / 20;
+    curY += (tgY - curY) / 20;
+    pointerBlob.style.transform = `translate(${Math.round(curX)}px, ${Math.round(curY)}px)`;
+    requestAnimationFrame(movePointer);
+  }
+  movePointer();
+
+  heroBg.addEventListener("mousemove", (e) => {
+    const rect = heroBg.getBoundingClientRect();
+    tgX = e.clientX - rect.left;
+    tgY = e.clientY - rect.top;
+  });
+
+  /* Safari fallback: replace goo filter with plain blur */
+  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+  if (isSafari) {
+    document.getElementById("blobs-container").style.filter = "blur(40px)";
+  }
+
+  /* ── HoverGlowButton (ported from hover-glow-button.tsx) ──────
+     Usage: add class="hk-glow-btn" + child <div class="btn-glow">
+     Set --glow-color, --btn-bg, --btn-text, --btn-hover-text via style=""
+  ─────────────────────────────────────────────────────────────── */
+  .hk-glow-btn {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .hk-glow-btn .btn-glow {
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    transition: transform 0.4s ease-out, opacity 0.3s ease;
+    z-index: 0;
+  }
+  .hk-glow-btn.is-hovered .btn-glow {
+    opacity: 0.55;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  .hk-glow-btn .btn-label {
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease;
+  }
+
+  /* ── HoverGlowButton (ported from hover-glow-button.tsx) ─────── */
+  document.querySelectorAll(".hk-glow-btn").forEach((btn) => {
+    const glow = btn.querySelector(".btn-glow");
+    btn.addEventListener("mouseenter", () => btn.classList.add("is-hovered"));
+    btn.addEventListener("mouseleave", () => btn.classList.remove("is-hovered"));
+    btn.addEventListener("mousemove", (e) => {
+      const r = btn.getBoundingClientRect();
+      glow.style.left = (e.clientX - r.left) + "px";
+      glow.style.top  = (e.clientY - r.top)  + "px";
+    });
+  });
+
+  /* ── GlowCard / SpotlightCard — pointer tracking ────────────── */
+  document.addEventListener("pointermove", (e) => {
+    const xp = (e.clientX / window.innerWidth).toFixed(2);
+    const yp = (e.clientY / window.innerHeight).toFixed(2);
+
+    document.querySelectorAll("[data-glow]").forEach((card) => {
+      card.style.setProperty("--x",  e.clientX.toFixed(2));
+      card.style.setProperty("--y",  e.clientY.toFixed(2));
+      card.style.setProperty("--xp", xp);
+      card.style.setProperty("--yp", yp);
+    });
+  });
+</script>
+
+</body>
+</html>
